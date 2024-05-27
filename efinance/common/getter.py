@@ -216,7 +216,7 @@ def get_quote_history(
 
 
 @to_numeric
-def get_history_bill(code: str) -> pd.DataFrame:
+def get_history_bill(code: str,limit:int=1000000) -> pd.DataFrame:
     """
     获取单支股票、债券的历史单子流入流出数据
 
@@ -237,7 +237,7 @@ def get_history_bill(code: str) -> pd.DataFrame:
     fields2 = ",".join(fields)
     quote_id = get_quote_id(code)
     params = (
-        ('lmt', '100000'),
+        ('lmt', limit),
         ('klt', '101'),
         ('secid', quote_id),
         ('fields1', 'f1,f2,f3,f7'),
